@@ -11,23 +11,19 @@ namespace QBU9QL_HFT_2021222.Models
     public class Motorcycle
     {
         [Key]
-        [ForeignKey(nameof(Parameters))]
         public string MotoId { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Model { get; set; }
 
-        public int? Price { get; set; }
+        public int EngineCapacity { get; set; }
 
-        [NotMapped]
-        public virtual Colours Colours { get; set; }
+        public int HorsePower { get; set; }
 
-        [NotMapped]
-        public virtual Parameters Parameters { get; set; }
+        public virtual Brands Brands { get; set; }
 
-        [ForeignKey(nameof(Colours))]
-        public int ColourId { get; set; }
-        public DateTime Vintage { get; set; }
+        [ForeignKey(nameof(Brands))]
+        public int BrandId { get; set; }    
     }
 }

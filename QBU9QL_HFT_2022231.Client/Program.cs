@@ -6,7 +6,7 @@ namespace QBU9QL_HFT_2022231.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MotoDatas.mdf;Integrated Security=True
         }
     }
 }

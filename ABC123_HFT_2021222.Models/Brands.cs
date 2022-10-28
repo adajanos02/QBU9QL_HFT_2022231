@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace QBU9QL_HFT_2021222.Models
 {
-    public class Colours
+    public class Brands
     {
         [Key]
-        public int ColourId { get; set; }
+        public int BrandId { get; set; }
         [Required]
-        public string ColourName { get; set; }
-        public string PaintWork { get; set; }
-        public bool OriginalPaint { get; set; }
+        [StringLength(20)]
+        public string Name { get; set; }
+        public int EstablishmentYear { get; set; }
+        public int NumbOfSold { get; set; }
     }
 }

@@ -5,7 +5,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data.mdf" />
+    <None Remove="MotoDatas.mdf" />
+    <None Remove="MotoDatas_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MotoDatas.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MotoDatas_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ABC123_HFT_2021222.Models\QBU9QL_HFT_2021222.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Data.mdf" />
   </ItemGroup>
 
 </Project>
