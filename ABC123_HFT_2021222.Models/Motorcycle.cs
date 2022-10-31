@@ -10,8 +10,19 @@ namespace QBU9QL_HFT_2021222.Models
 {
     public class Motorcycle
     {
+        public Motorcycle(int motoId, string model, int engineCapacity, int horsePower, int brandId)
+        {
+            MotoId = motoId;
+            Model = model;
+            EngineCapacity = engineCapacity;
+            HorsePower = horsePower;
+            BrandId = brandId;
+            
+        }
+
         [Key]
-        public string MotoId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MotoId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -20,10 +31,11 @@ namespace QBU9QL_HFT_2021222.Models
         public int EngineCapacity { get; set; }
 
         public int HorsePower { get; set; }
-
+        [NotMapped]
         public virtual Brands Brands { get; set; }
 
         [ForeignKey(nameof(Brands))]
-        public int BrandId { get; set; }    
+        public int BrandId { get; set; } 
+        
     }
 }
