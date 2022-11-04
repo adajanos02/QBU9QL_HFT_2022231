@@ -17,6 +17,11 @@ namespace QBU9QL_HFT_2021222.Models
             EstablishmentYear = establishmentYear;
             NumbOfSoldProd = numbOfSoldProd;
         }
+        public virtual ICollection<Motorcycle> Motorcycles { get; set; }
+        public Brands()
+        {
+            Motorcycles = new HashSet<Motorcycle>();
+        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

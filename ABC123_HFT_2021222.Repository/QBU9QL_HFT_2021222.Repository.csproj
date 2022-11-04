@@ -6,6 +6,17 @@
 
   <ItemGroup>
     <None Remove="Data.mdf" />
+    <None Remove="Data\MotoGP.mdf" />
+    <None Remove="Data\MotoGP_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\MotoGP.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\MotoGP_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

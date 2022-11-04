@@ -19,6 +19,11 @@ namespace QBU9QL_HFT_2021222.Models
             BrandId = brandId;
             
         }
+        public virtual ICollection<Riders> Riders { get; set; }
+        public Motorcycle()
+        {
+            Riders = new HashSet<Riders>();
+        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

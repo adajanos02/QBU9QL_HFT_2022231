@@ -19,6 +19,10 @@ namespace QBU9QL_HFT_2021222.Models
             
             MotoId = motoId;
         }
+        public Riders()
+        {
+
+        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

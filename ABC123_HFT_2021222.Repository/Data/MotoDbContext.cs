@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ABC123_HFT_2021222.Repository
+namespace QBU9QL_HFT_2021222.Repository.Data
 {
     internal class MotoDbContext : DbContext
     {
@@ -18,26 +18,32 @@ namespace ABC123_HFT_2021222.Repository
 
         public MotoDbContext()
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             if (!builder.IsConfigured)
             {
-                builder.UseInMemoryDatabase("Moto").UseLazyLoadingProxies();
-                    
+                builder.UseInMemoryDatabase("MotoGP").UseLazyLoadingProxies();
+
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+
             modelBuilder.Entity<Riders>(rider => rider
                     .HasOne(rider => rider.Motorcycle)
-                    .WithMany()
-                    .HasForeignKey(rider => rider.RiderId)
+                    .WithMany(moto => moto.Riders)
+                    .HasForeignKey(rider => rider.MotoId)
                     .OnDelete(DeleteBehavior.Cascade));
+
+            modelBuilder.Entity<Motorcycle>(moto => moto
+                .HasOne(moto => moto.Brands)
+                .WithMany(brand => brand.Motorcycles)
+                .HasForeignKey(moto => moto.BrandId)
+                .OnDelete(DeleteBehavior.Cascade));
 
             modelBuilder.Entity<Riders>().HasData(new Riders[]
             {
