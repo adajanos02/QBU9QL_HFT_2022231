@@ -4,20 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Data.mdf" />
-    <None Remove="Data\MotoGP.mdf" />
-    <None Remove="Data\MotoGP_log.ldf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Data\MotoGP.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\MotoGP_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
@@ -34,8 +21,6 @@
     <ProjectReference Include="..\ABC123_HFT_2021222.Models\QBU9QL_HFT_2021222.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Data.mdf" />
-  </ItemGroup>
+
 
 </Project>

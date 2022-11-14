@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using QBU9QL_HFT_2021222.Models;
 
 
 namespace QBU9QL_HFT_2022231.Client
@@ -7,6 +8,7 @@ namespace QBU9QL_HFT_2022231.Client
     {
         static void Main(string[] args)
         {
+            
             
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QBU9QL_HFT_2021222.Repository.Data
 {
-    internal class MotoDbContext : DbContext
+    public class MotoDbContext : DbContext
     {
 
         public DbSet<Motorcycle> Motorcycless { get; set; }
@@ -18,7 +18,7 @@ namespace QBU9QL_HFT_2021222.Repository.Data
 
         public MotoDbContext()
         {
-            Database.EnsureCreated();
+            this.Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -85,7 +85,7 @@ namespace QBU9QL_HFT_2021222.Repository.Data
                 new Brands(8, "Harley Davidson", 1856, 45000000)
             });
 
-
+            
         }
     }
 }
