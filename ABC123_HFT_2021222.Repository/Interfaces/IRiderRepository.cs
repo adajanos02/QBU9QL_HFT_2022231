@@ -7,31 +7,32 @@ using QBU9QL_HFT_2021222.Models;
 
 namespace QBU9QL_HFT_2021222.Repository.Interfaces
 {
-    internal class IRiderRepository : IRepository<Riders>
+    public interface IRiderRepository : IRepository<Riders>
     {
         public void Create(Riders item)
         {
-            throw new NotImplementedException();
+            this.Create(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.Delete(id);
         }
 
         public Riders Read(int id)
         {
-            throw new NotImplementedException();
+            
+            return this.Read(id);
         }
 
         public IQueryable<Riders> ReadAll()
         {
-            throw new NotImplementedException();
+            return this.ReadAll();
         }
 
         public void Update(Riders item)
         {
-            throw new NotImplementedException();
+            this.Update(item);
         }
     }
 }

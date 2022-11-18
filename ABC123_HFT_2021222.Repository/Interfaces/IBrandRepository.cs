@@ -7,31 +7,31 @@ using QBU9QL_HFT_2021222.Models;
 
 namespace QBU9QL_HFT_2021222.Repository.Interfaces
 {
-    public class IBrandRepository : IRepository<Brands>
+    public interface IBrandRepository : IRepository<Brands>
     {
         public void Create(Brands item)
         {
-            throw new NotImplementedException();
+            this.Create(item);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.Delete(id);
         }
 
         public Brands Read(int id)
         {
-            throw new NotImplementedException();
+            return this.Read(id);
         }
 
         public IQueryable<Brands> ReadAll()
         {
-            throw new NotImplementedException();
+            return this.ReadAll();
         }
 
         public void Update(Brands item)
         {
-            throw new NotImplementedException();
+            this.Update(item);
         }
     }
 }
