@@ -6,7 +6,7 @@ using QBU9QL_HFT_2021222.Repository.Interfaces;
 
 namespace ABC123_HFT_2021222.Logic
 {
-    public class MotoLogic 
+    public class MotoLogic : IMotoLogic
     {
         IRepository<Motorcycle> repo;
         public MotoLogic(IRepository<Motorcycle> repo)
