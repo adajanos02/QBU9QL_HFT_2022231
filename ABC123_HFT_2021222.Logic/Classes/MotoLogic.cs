@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using QBU9QL_HFT_2021222.Logic.Interfaces;
 using QBU9QL_HFT_2021222.Models;
 using QBU9QL_HFT_2021222.Repository;
 using QBU9QL_HFT_2021222.Repository.Interfaces;
 
-namespace ABC123_HFT_2021222.Logic
+namespace QBU9QL_HFT_2021222.Logic.Classes
 {
     public class MotoLogic : IMotoLogic
     {
@@ -20,17 +21,17 @@ namespace ABC123_HFT_2021222.Logic
             {
                 throw new ArgumentException("Model name too short...");
             }
-            this.repo.Create(item);
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            this.repo.Delete(id);
+            repo.Delete(id);
         }
 
         public Motorcycle Read(int id)
         {
-            var moto = this.repo.Read(id);
+            var moto = repo.Read(id);
             if (moto == null)
             {
                 throw new ArgumentException("Moto not exists");
@@ -40,12 +41,12 @@ namespace ABC123_HFT_2021222.Logic
 
         public IQueryable<Motorcycle> ReadAll()
         {
-            return this.repo.ReadAll();
+            return repo.ReadAll();
         }
 
         public void Update(Motorcycle item)
         {
-            this.repo.Update(item);
+            repo.Update(item);
         }
 
 

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QBU9QL_HFT_2021222.Logic.Interfaces;
 using QBU9QL_HFT_2021222.Models;
 using QBU9QL_HFT_2021222.Repository.Interfaces;
 
-namespace QBU9QL_HFT_2021222.Logic
+namespace QBU9QL_HFT_2021222.Logic.Classes
 {
-    internal class RiderLogic 
+    public class RiderLogic : IRiderLogic
     {
         IRepository<Riders> repo;
 
@@ -19,27 +20,27 @@ namespace QBU9QL_HFT_2021222.Logic
 
         public void Create(Riders item)
         {
-            this.Create(item);
+            Create(item);
         }
 
         public void Delete(int id)
         {
-            this.Delete(id);
+            Delete(id);
         }
 
         public Riders Read(int id)
         {
-            return this.Read(id);
+            return Read(id);
         }
 
         public IQueryable<Riders> ReadAll()
         {
-            return this.ReadAll();
+            return ReadAll();
         }
 
         public void Update(Riders item)
         {
-            this.Update(item);
+            Update(item);
         }
     }
 }

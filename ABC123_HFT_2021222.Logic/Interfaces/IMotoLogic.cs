@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using QBU9QL_HFT_2021222.Models;
 
-namespace ABC123_HFT_2021222.Logic
+namespace QBU9QL_HFT_2021222.Logic.Interfaces
 {
     public interface IMotoLogic
     {
