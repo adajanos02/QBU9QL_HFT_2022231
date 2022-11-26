@@ -58,6 +58,14 @@ namespace QBU9QL_HFT_2022231.Test
 
             mock.Verify(m => m.Create(newMoto), Times.Never);
         }
+        [Test]
+        public void DeleteCheck()
+        {
+            motoLogic.Delete(1);
+
+            mock.Verify(m => m.Delete(It.IsAny<int>()), Times.Once);
+        }
+        
 
     }
 }
