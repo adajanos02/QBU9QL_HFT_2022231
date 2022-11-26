@@ -65,7 +65,18 @@ namespace QBU9QL_HFT_2022231.Test
 
             mock.Verify(m => m.Delete(It.IsAny<int>()), Times.Once);
         }
+        [Test]
+        public void UpdateCheck()
+        {
+            Motorcycle newMoto = new Motorcycle(12, "ETZ", 150, 15, 13);
+
+            motoLogic.Update(newMoto);
+
+            mock.Verify(m => m.Update(newMoto), Times.Once);
+        }
+        [Test]
         
+
 
     }
 }
