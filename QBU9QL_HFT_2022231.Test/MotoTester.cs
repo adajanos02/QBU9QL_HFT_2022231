@@ -12,7 +12,7 @@ using QBU9QL_HFT_2022231.Repository.Interfaces;
 namespace QBU9QL_HFT_2022231.Test
 {
     [TestFixture]
-    public class Class1
+    public class MotoTester
     {
         MotoLogic motoLogic;
         Mock<IRepository<Motorcycle>> mock;
@@ -23,16 +23,26 @@ namespace QBU9QL_HFT_2022231.Test
             mock = new Mock<IRepository<Motorcycle>>();
             mock.Setup(m => m.ReadAll()).Returns(new List<Motorcycle>()
             {
-                new Motorcycle(45, "S50", 50, 6, 2),
-                new Motorcycle(12, "ETZ", 250, 20, 3),
-                new Motorcycle(21, "Pegaso", 650, 36, 4),
+                new Motorcycle(45, "S50", 50, 6, 12),
+                new Motorcycle(12, "ETZ", 250, 20, 13),
+                new Motorcycle(21, "Pegaso", 650, 36, 14),
 
             }.AsQueryable());
 
             motoLogic = new MotoLogic(mock.Object);
         }
 
-        
-     
+        [Test]
+        public void CreateCheck()
+        {
+            Motorcycle newMoto = new Motorcycle(36, "Varadero", 1000, 102, 3);
+
+            motoLogic.Create(newMoto);
+
+            mock.Verify(m => m.Create(newMoto), Times.Once);
+        }
+
+       
+
     }
 }
