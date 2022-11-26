@@ -18,7 +18,7 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 
         public void Create(Motorcycle item)
         {
-            if (item.Model.Length < 2)
+            if (item.Model.Length > 10)
             {
                 throw new ArgumentException("Model name too short...");
             }
@@ -50,10 +50,17 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             repo.Update(item);
         }
 
-        public IEnumerable<Motorcycle> HasThisBrand(string brand)
+        public IEnumerable<Motorcycle> MaxSoldCompany()
         {
-            return repo.ReadAll().Where(m => m.Brands.Name == brand);
+            return repo.ReadAll().Where(m => m.Brands.NumbOfSoldProd == repo.ReadAll().Max(k => k.Brands.NumbOfSoldProd));
         }
+        public IEnumerable<Motorcycle> CompanyOlderThan70()
+        {
+            return repo.ReadAll().Where(m => m.Brands.EstablishmentYear < 1952);
+        }
+
+
+
 
 
     }

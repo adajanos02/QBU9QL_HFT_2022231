@@ -30,11 +30,11 @@ namespace QBU9QL_HFT_2022231.Models
         public int MotoId { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(10)]
         public string Model { get; set; }
 
         public int EngineCapacity { get; set; }
-
+        
         public int HorsePower { get; set; }
         [NotMapped]
         public virtual Brands Brands { get; set; }

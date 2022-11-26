@@ -61,7 +61,7 @@ namespace QBU9QL_HFT_2022231.Test
         [Test]
         public void CreateCheckWithIncorrectModelName()
         {
-            Motorcycle newMoto = new Motorcycle() { MotoId = 87 };
+            Motorcycle newMoto = new Motorcycle(36, "aaaaaaaaaaa", 1000, 1, 125);
             try
             {
                 motoLogic.Create(newMoto);
@@ -73,6 +73,7 @@ namespace QBU9QL_HFT_2022231.Test
 
 
             mock.Verify(m => m.Create(newMoto), Times.Never);
+
         }
         [Test]
         public void DeleteCheck()
