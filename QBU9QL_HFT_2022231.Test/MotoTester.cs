@@ -42,7 +42,22 @@ namespace QBU9QL_HFT_2022231.Test
             mock.Verify(m => m.Create(newMoto), Times.Once);
         }
 
-       
+        [Test]
+        public void CreateCheckWithIncorrectInput()
+        {
+            Motorcycle newMoto = new Motorcycle() { MotoId = 87 };
+            try
+            {
+                motoLogic.Create(newMoto);
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+            mock.Verify(m => m.Create(newMoto), Times.Never);
+        }
 
     }
 }
