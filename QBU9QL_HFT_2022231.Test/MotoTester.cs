@@ -75,7 +75,15 @@ namespace QBU9QL_HFT_2022231.Test
             mock.Verify(m => m.Update(newMoto), Times.Once);
         }
         [Test]
-        
+        public void ReadCheck()
+        {
+            Motorcycle newMoto = new Motorcycle(45, "S50", 50, 6, 12);
+            mock.Setup(m => m.Read(0)).Returns(newMoto);
+
+            var result = motoLogic.Read(0);
+
+            Assert.That(result, Is.EqualTo(newMoto));
+        }
 
 
     }
