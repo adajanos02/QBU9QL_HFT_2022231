@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using QBU9QL_HFT_2022231.Logic.Interfaces;
 using QBU9QL_HFT_2022231.Models;
 using QBU9QL_HFT_2022231.Repository;
@@ -49,7 +50,10 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             repo.Update(item);
         }
 
-        
+        public IEnumerable<Motorcycle> HasThisBrand(string brand)
+        {
+            return repo.ReadAll().Where(m => m.Brands.Name == brand);
+        }
 
 
     }

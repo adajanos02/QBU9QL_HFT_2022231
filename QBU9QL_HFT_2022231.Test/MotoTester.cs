@@ -59,6 +59,22 @@ namespace QBU9QL_HFT_2022231.Test
             mock.Verify(m => m.Create(newMoto), Times.Never);
         }
         [Test]
+        public void CreateCheckWithIncorrectModelName()
+        {
+            Motorcycle newMoto = new Motorcycle() { MotoId = 87 };
+            try
+            {
+                motoLogic.Create(newMoto);
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+            mock.Verify(m => m.Create(newMoto), Times.Never);
+        }
+        [Test]
         public void DeleteCheck()
         {
             motoLogic.Delete(1);
@@ -84,6 +100,8 @@ namespace QBU9QL_HFT_2022231.Test
 
             Assert.That(result, Is.EqualTo(newMoto));
         }
+        
+
 
 
     }

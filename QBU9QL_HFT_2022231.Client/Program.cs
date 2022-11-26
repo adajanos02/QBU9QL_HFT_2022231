@@ -22,7 +22,9 @@ namespace QBU9QL_HFT_2022231.Client
             var motoLogic = new MotoLogic(motoRepo);
             var riderLogic = new RiderLogic(riderRepo);
             var brandLogic = new BrandLogic(brandRepo);
+
             
+            ;
         }
     }
 }
