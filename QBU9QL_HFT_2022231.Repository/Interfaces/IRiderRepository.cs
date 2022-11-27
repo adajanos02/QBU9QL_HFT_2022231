@@ -21,7 +21,6 @@ namespace QBU9QL_HFT_2022231.Repository.Interfaces
 
         public Riders Read(int id)
         {
-            
             return this.Read(id);
         }
 

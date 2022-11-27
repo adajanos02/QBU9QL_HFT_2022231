@@ -11,25 +11,232 @@ using QBU9QL_HFT_2022231.Repository.Interfaces;
 
 namespace QBU9QL_HFT_2022231.Test
 {
-    [TestFixture]
-    public class MotoTester
+    public class FakeMotoRepository : IRepository<Motorcycle>
     {
-        MotoLogic motoLogic;
-        Mock<IRepository<Motorcycle>> mock;
-
-        [SetUp]
-        public void InIt()
+        public void Create(Motorcycle item)
         {
-            mock = new Mock<IRepository<Motorcycle>>();
-            mock.Setup(m => m.ReadAll()).Returns(new List<Motorcycle>()
+            this.Create(item);
+        }
+
+        public void Delete(int id)
+        {
+            this.Delete(id);
+        }
+
+        public Motorcycle Read(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Motorcycle> ReadAll()
+        {
+            return new List<Motorcycle>()
             {
                 new Motorcycle(45, "S50", 50, 6, 12),
                 new Motorcycle(12, "ETZ", 250, 20, 13),
                 new Motorcycle(21, "Pegaso", 650, 36, 14),
+            }.AsQueryable();
+        }
 
-            }.AsQueryable());
+        public void Update(Motorcycle item)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class FakeRiderRepository : IRepository<Riders>
+    {
+        public void Create(Riders item)
+        {
+            throw new NotImplementedException();
+        }
 
-            motoLogic = new MotoLogic(mock.Object);
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Riders Read(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Riders> ReadAll()
+        {
+            return new List<Riders>()
+            {
+                new Riders(1, "Max Verstappen", 1999, 'M', 2),
+                new Riders(2, "Lewis Hamilton", 1992, 'M', 1),
+                new Riders(3, "Niki Lauda", 1965, 'M', 3),
+            }.AsQueryable();
+        }
+
+        public void Update(Riders item)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class FakeBrandRepository : IRepository<Brands>
+    {
+        public void Create(Brands item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Brands Read(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Brands> ReadAll()
+        {
+            return new List<Brands>()
+            {
+                 new Brands(1, "Simson", 1856, 300000000),
+                 new Brands(2, "MZ", 1785, 90000),
+                 new Brands(3, "Aprilia", 1955, 3000),
+            }.AsQueryable();
+        }
+
+        public void Update(Brands item)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    [TestFixture]
+    public class MotoTester
+    {
+        MotoLogic motoLogic;
+        RiderLogic riderLogic;
+        BrandLogic brandLogic;
+
+        MotoLogic fakeMotoLogic;
+
+        Mock<IRepository<Motorcycle>> mockMoto;
+        Mock<IRepository<Riders>> mockRiders;
+        Mock<IRepository<Brands>> mockBrands;
+
+
+        [SetUp]
+        public void InIt()
+        {
+            mockMoto = new Mock<IRepository<Motorcycle>>();
+            mockRiders = new Mock<IRepository<Riders>>();
+            mockBrands = new Mock<IRepository<Brands>>();
+
+            var brands = new List<Brands>()
+            {
+                 new Brands(1, "Simson", 1856, 30000000),
+                 new Brands(2, "MZ", 1785, 90000),
+                 new Brands(3, "Aprilia", 1955, 3000),
+            };
+
+            var motos = new List<Motorcycle>()
+            {
+                new Motorcycle(1, "S50", 50, 6, 2) {Brands = brands[0]},
+                new Motorcycle(2, "ETZ", 850, 20, 3) {Brands = brands[1]},
+                new Motorcycle(3, "Pegaso", 900, 36, 1) {Brands = brands[2]},
+            };
+
+            var riders = new List<Riders>()
+            {
+                new Riders(1, "Max Verstappen", 1999, 'M', 2) {Motorcycle = motos[1]},
+                new Riders(2, "Lewis Hamilton", 1992, 'M', 1) {Motorcycle = motos[0]},
+                new Riders(3, "Niki Lauda", 1965, 'M', 3) {Motorcycle = motos[2]},
+            };
+
+
+
+            mockMoto.Setup(m => m.ReadAll()).Returns(motos.AsQueryable());
+            mockRiders.Setup(m => m.ReadAll()).Returns(riders.AsQueryable());
+            mockBrands.Setup(m => m.ReadAll()).Returns(brands.AsQueryable());
+
+            motoLogic = new MotoLogic(mockMoto.Object);
+            riderLogic = new RiderLogic(mockRiders.Object);
+            brandLogic = new BrandLogic(mockBrands.Object);
+
+            fakeMotoLogic = new MotoLogic(new FakeMotoRepository());
+
+        }
+        //public IEnumerable<Riders> HasMoreThan800ccmMoto()
+        //{
+        //    return repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800);
+        //}
+        //public IEnumerable<Riders> HasThisBrand(string brand)
+        //{
+        //    return repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == brand);
+        //}
+        //public IEnumerable<Riders> HasThisModel()
+        //{
+        //    return repo.ReadAll().Where(r => r.Motorcycle.Model == "ZX10");
+        //}
+        [Test]
+        public void HasThisModelTest()
+        {
+            var expected = new List<object>()
+            {
+                new Riders(1, "Max Verstappen", 1999, 'M', 2),
+            };
+
+            var result = riderLogic.HasThisModel().ToList();
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void MasMoreThan800ccmMoto()
+        {
+            var expected = new List<object>()
+            {
+                new Riders(1, "Max Verstappen", 1999, 'M', 2),
+                new Riders(3, "Niki Lauda", 1965, 'M', 3),
+            };
+
+            var result = riderLogic.HasMoreThan800ccmMoto().ToList();
+
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void HasApriliaTest()
+        {
+            object expected = new List<object>()
+            {
+                new Riders(3, "Niki Lauda", 1965, 'M', 3),
+            };
+
+            var result = riderLogic.HasAprilia().ToList();
+
+            Assert.AreEqual(expected, result);
+
+        }
+        [Test]
+        public void MaxSoldCompanyTest()
+        {
+            var expected = new List<object>()
+            {
+                new Motorcycle(1, "S50", 50, 6, 2),
+            };
+            
+            var result = motoLogic.MaxSoldCompany().ToList();
+
+            Assert.AreEqual(expected.ToString(), result.ToString());  
+        }
+
+        [Test]
+        public void CompanyOlderThan70Test()
+        {
+            var expected = new List<object>()
+            {
+                new Brands(1, "Simson", 1856, 30000000),
+                new Brands(2, "MZ", 1785, 90000),
+            };
+
+            var result = motoLogic.CompanyOlderThan70().ToList();
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
         }
 
         [Test]
@@ -39,7 +246,7 @@ namespace QBU9QL_HFT_2022231.Test
 
             motoLogic.Create(newMoto);
 
-            mock.Verify(m => m.Create(newMoto), Times.Once);
+            mockMoto.Verify(m => m.Create(newMoto), Times.Once);
         }
 
         [Test]
@@ -56,7 +263,7 @@ namespace QBU9QL_HFT_2022231.Test
             }
 
 
-            mock.Verify(m => m.Create(newMoto), Times.Never);
+            mockMoto.Verify(m => m.Create(newMoto), Times.Never);
         }
         [Test]
         public void CreateCheckWithIncorrectModelName()
@@ -72,7 +279,7 @@ namespace QBU9QL_HFT_2022231.Test
             }
 
 
-            mock.Verify(m => m.Create(newMoto), Times.Never);
+            mockMoto.Verify(m => m.Create(newMoto), Times.Never);
 
         }
         [Test]
@@ -80,7 +287,7 @@ namespace QBU9QL_HFT_2022231.Test
         {
             motoLogic.Delete(1);
 
-            mock.Verify(m => m.Delete(It.IsAny<int>()), Times.Once);
+            mockMoto.Verify(m => m.Delete(It.IsAny<int>()), Times.Once);
         }
         [Test]
         public void UpdateCheck()
@@ -89,19 +296,19 @@ namespace QBU9QL_HFT_2022231.Test
 
             motoLogic.Update(newMoto);
 
-            mock.Verify(m => m.Update(newMoto), Times.Once);
+            mockMoto.Verify(m => m.Update(newMoto), Times.Once);
         }
         [Test]
         public void ReadCheck()
         {
             Motorcycle newMoto = new Motorcycle(45, "S50", 50, 6, 12);
-            mock.Setup(m => m.Read(0)).Returns(newMoto);
+            mockMoto.Setup(m => m.Read(0)).Returns(newMoto);
 
             var result = motoLogic.Read(0);
 
             Assert.That(result, Is.EqualTo(newMoto));
         }
-        
+
 
 
 

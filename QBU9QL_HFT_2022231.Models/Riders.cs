@@ -35,5 +35,22 @@ namespace QBU9QL_HFT_2022231.Models
         [ForeignKey(nameof(Motorcycle))]
         public int MotoId { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            else
+            {
+                return (obj as Riders).RiderId == this.RiderId &&
+                    (obj as Riders).Name == this.Name &&
+                    (obj as Riders).Year == this.Year &&
+                    (obj as Riders).Gender == this.Gender &&
+                    (obj as Riders).MotoId == this.MotoId;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.RiderId, this.Name, this.Year, this.Gender, this.MotoId);
+        }
+
     }
 }

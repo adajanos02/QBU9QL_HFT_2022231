@@ -47,13 +47,13 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
         {
             return repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800);
         }
-        public IEnumerable<Riders> HasThisBrand(string brand)
+        public IEnumerable<Riders> HasAprilia()
         {
-            return repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == brand);
+            return repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == "Aprilia");
         }
         public IEnumerable<Riders> HasThisModel()
         {
-            return repo.ReadAll().Where(r => r.Motorcycle.Model == "ZX10");
+            return repo.ReadAll().Where(r => r.Motorcycle.Model == "ETZ");
         }
 
     }
