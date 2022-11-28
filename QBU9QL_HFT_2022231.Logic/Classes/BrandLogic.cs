@@ -20,27 +20,27 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 
         public void Create(Brands item)
         {
-            Create(item);
+            this.repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            Delete(id);
+            this.repo.Delete(id);
         }
 
         public Brands Read(int id)
         {
-            return Read(id);
+            return this.repo.Read(id);
         }
 
         public IQueryable<Brands> ReadAll()
         {
-            return ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Brands item)
         {
-            Update(item);
+            this.repo.Update(item);
         }
     }
 }

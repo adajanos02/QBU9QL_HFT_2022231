@@ -6,49 +6,44 @@ using QBU9QL_HFT_2022231.Logic;
 using QBU9QL_HFT_2022231.Logic.Interfaces;
 using QBU9QL_HFT_2022231.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace QBU9QL_HFT_2022231.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class MotoController : ControllerBase
+    public class RiderController : ControllerBase
     {
-        IMotoLogic logic;
 
-        public MotoController(IMotoLogic logic)
+        IRiderLogic logic;
+        public RiderController(IRiderLogic logic)
         {
-            this.logic = logic;
+                this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Motorcycle> ReadAll()
+        public IEnumerable<Riders> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
-        
         [HttpGet("{id}")]
-        public Motorcycle Read(int id)
+        public Riders Read(int id)
         {
             return this.logic.Read(id);
         }
 
-        
         [HttpPost]
-        public void Create([FromBody] Motorcycle value)
+        public void Create([FromBody] Riders value)
         {
             this.logic.Create(value);
         }
 
-        
         [HttpPut]
-        public void Update([FromBody] Motorcycle value)
+        public void Update([FromBody] Riders value)
         {
             this.logic.Update(value);
         }
 
-       
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -20,41 +20,42 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 
         public void Create(Riders item)
         {
-            Create(item);
+            this.repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            Delete(id);
+            this.repo.Delete(id);
         }
 
         public Riders Read(int id)
         {
-            return Read(id);
+            return this.repo.Read(id);
         }
 
         public IQueryable<Riders> ReadAll()
         {
-            return ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Riders item)
         {
-            Update(item);
+            this.repo.Update(item);
         }
 
-        public IEnumerable<Riders> HasMoreThan800ccmMoto()
+        public IEnumerable<object> HasMoreThan800ccmMoto()
         {
-            return repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800);
+            return this.repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800);
         }
-        public IEnumerable<Riders> HasAprilia()
+        public IEnumerable<object> HasAprilia()
         {
-            return repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == "Aprilia");
+            return this.repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == "Aprilia");
         }
-        public IEnumerable<Riders> HasThisModel()
+        public IEnumerable<object> HasThisModel()
         {
-            return repo.ReadAll().Where(r => r.Motorcycle.Model == "ETZ");
+            return this.repo.ReadAll().Where(r => r.Motorcycle.Model == "ETZ");
         }
 
+        
     }
 }

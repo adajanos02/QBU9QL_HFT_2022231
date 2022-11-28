@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 using QBU9QL_HFT_2022231.Models;
 
 namespace QBU9QL_HFT_2022231.Logic.Interfaces
@@ -10,5 +13,8 @@ namespace QBU9QL_HFT_2022231.Logic.Interfaces
         Riders Read(int id);
         IQueryable<Riders> ReadAll();
         void Update(Riders item);
+        IEnumerable<object> HasMoreThan800ccmMoto();
+        IEnumerable<object> HasAprilia();
+        IEnumerable<object> HasThisModel();
     }
 }

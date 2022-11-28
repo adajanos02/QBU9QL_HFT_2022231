@@ -22,17 +22,17 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             {
                 throw new ArgumentException("Model name too short...");
             }
-            repo.Create(item);
+            this.repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         public Motorcycle Read(int id)
         {
-            var moto = repo.Read(id);
+            var moto = this.repo.Read(id);
             if (moto == null)
             {
                 throw new ArgumentException("Moto not exists");
@@ -42,21 +42,21 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 
         public IQueryable<Motorcycle> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Motorcycle item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
 
         public IEnumerable<object> MaxSoldCompany()
         {
-            return repo.ReadAll().Where(m => m.Brands.NumbOfSoldProd == repo.ReadAll().Max(k => k.Brands.NumbOfSoldProd));
+            return this.repo.ReadAll().Where(m => m.Brands.NumbOfSoldProd == repo.ReadAll().Max(k => k.Brands.NumbOfSoldProd));
         }
         public IEnumerable<object> CompanyOlderThan70()
         {
-            return repo.ReadAll().Where(m => m.Brands.EstablishmentYear < 1952);
+            return this.repo.ReadAll().Where(m => m.Brands.EstablishmentYear < 1952);
         }
 
 

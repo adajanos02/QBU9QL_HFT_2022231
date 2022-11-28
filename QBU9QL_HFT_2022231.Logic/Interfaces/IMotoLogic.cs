@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using QBU9QL_HFT_2022231.Models;
 
 namespace QBU9QL_HFT_2022231.Logic.Interfaces
@@ -10,5 +12,7 @@ namespace QBU9QL_HFT_2022231.Logic.Interfaces
         Motorcycle Read(int id);
         IQueryable<Motorcycle> ReadAll();
         void Update(Motorcycle item);
+        IEnumerable<object> MaxSoldCompany();
+        IEnumerable<object> CompanyOlderThan70();
     }
 }

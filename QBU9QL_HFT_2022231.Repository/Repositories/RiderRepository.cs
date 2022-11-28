@@ -25,7 +25,11 @@ namespace QBU9QL_HFT_2022231.Repository.Repositories
             var old = Read(item.RiderId);
             foreach (var prop in old.GetType().GetProperties())
             {
-                prop.SetValue(old, prop.GetValue(item));
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(item));
+                }
+                
             }
             ctx.SaveChanges();
         }
