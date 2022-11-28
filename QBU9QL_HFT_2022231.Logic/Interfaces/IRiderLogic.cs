@@ -3,7 +3,7 @@ using QBU9QL_HFT_2022231.Models;
 
 namespace QBU9QL_HFT_2022231.Logic.Interfaces
 {
-    internal interface IRiderLogic
+    public interface IRiderLogic
     {
         void Create(Riders item);
         void Delete(int id);

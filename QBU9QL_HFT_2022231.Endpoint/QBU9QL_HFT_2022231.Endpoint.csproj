@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+	
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\QBU9QL_HFT_2022231.Logic\QBU9QL_HFT_2022231.Logic.csproj" />

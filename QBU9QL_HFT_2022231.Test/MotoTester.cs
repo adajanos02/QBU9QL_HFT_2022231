@@ -11,102 +11,7 @@ using QBU9QL_HFT_2022231.Repository.Interfaces;
 
 namespace QBU9QL_HFT_2022231.Test
 {
-    public class FakeMotoRepository : IRepository<Motorcycle>
-    {
-        public void Create(Motorcycle item)
-        {
-            this.Create(item);
-        }
 
-        public void Delete(int id)
-        {
-            this.Delete(id);
-        }
-
-        public Motorcycle Read(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Motorcycle> ReadAll()
-        {
-            return new List<Motorcycle>()
-            {
-                new Motorcycle(45, "S50", 50, 6, 12),
-                new Motorcycle(12, "ETZ", 250, 20, 13),
-                new Motorcycle(21, "Pegaso", 650, 36, 14),
-            }.AsQueryable();
-        }
-
-        public void Update(Motorcycle item)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class FakeRiderRepository : IRepository<Riders>
-    {
-        public void Create(Riders item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Riders Read(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Riders> ReadAll()
-        {
-            return new List<Riders>()
-            {
-                new Riders(1, "Max Verstappen", 1999, 'M', 2),
-                new Riders(2, "Lewis Hamilton", 1992, 'M', 1),
-                new Riders(3, "Niki Lauda", 1965, 'M', 3),
-            }.AsQueryable();
-        }
-
-        public void Update(Riders item)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class FakeBrandRepository : IRepository<Brands>
-    {
-        public void Create(Brands item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Brands Read(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Brands> ReadAll()
-        {
-            return new List<Brands>()
-            {
-                 new Brands(1, "Simson", 1856, 300000000),
-                 new Brands(2, "MZ", 1785, 90000),
-                 new Brands(3, "Aprilia", 1955, 3000),
-            }.AsQueryable();
-        }
-
-        public void Update(Brands item)
-        {
-            throw new NotImplementedException();
-        }
-    }
     [TestFixture]
     public class MotoTester
     {
@@ -114,7 +19,7 @@ namespace QBU9QL_HFT_2022231.Test
         RiderLogic riderLogic;
         BrandLogic brandLogic;
 
-        MotoLogic fakeMotoLogic;
+       
 
         Mock<IRepository<Motorcycle>> mockMoto;
         Mock<IRepository<Riders>> mockRiders;
@@ -159,21 +64,10 @@ namespace QBU9QL_HFT_2022231.Test
             riderLogic = new RiderLogic(mockRiders.Object);
             brandLogic = new BrandLogic(mockBrands.Object);
 
-            fakeMotoLogic = new MotoLogic(new FakeMotoRepository());
+            
 
         }
-        //public IEnumerable<Riders> HasMoreThan800ccmMoto()
-        //{
-        //    return repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800);
-        //}
-        //public IEnumerable<Riders> HasThisBrand(string brand)
-        //{
-        //    return repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == brand);
-        //}
-        //public IEnumerable<Riders> HasThisModel()
-        //{
-        //    return repo.ReadAll().Where(r => r.Motorcycle.Model == "ZX10");
-        //}
+      
         [Test]
         public void HasThisModelTest()
         {
