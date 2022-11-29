@@ -50,13 +50,13 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             this.repo.Update(item);
         }
 
-        public IEnumerable<object> MaxSoldCompany()
+        public IEnumerable<object> ThisModelHasTheBestBrand()
         {
             return this.repo.ReadAll().Where(m => m.Brands.NumbOfSoldProd == repo.ReadAll().Max(k => k.Brands.NumbOfSoldProd)).Select(m => m.Model);
         }
         public IEnumerable<object> CompanyOlderThan70()
         {
-            return this.repo.ReadAll().Where(m => m.Brands.EstablishmentYear < 1952);
+            return this.repo.ReadAll().Where(m => m.Brands.EstablishmentYear < 1952).Select(m => m.Brands.Name).Distinct();
         }
 
 

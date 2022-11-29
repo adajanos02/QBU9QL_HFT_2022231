@@ -45,15 +45,15 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 
         public IEnumerable<object> HasMoreThan800ccmMoto()
         {
-            return this.repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800);
+            return this.repo.ReadAll().Where(r => r.Motorcycle.EngineCapacity > 800).Select(r => r.Name);
         }
         public IEnumerable<object> HasAprilia()
         {
-            return this.repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == "Aprilia");
+            return this.repo.ReadAll().Where(r => r.Motorcycle.Brands.Name == "Aprilia").Select(r => r.Name);
         }
-        public IEnumerable<object> HasThisModel()
+        public IEnumerable<object> HasETZModel()
         {
-            return this.repo.ReadAll().Where(r => r.Motorcycle.Model == "ETZ");
+            return this.repo.ReadAll().Where(r => r.Motorcycle.Model == "ETZ").Select(r => r.Name);
         }
 
         

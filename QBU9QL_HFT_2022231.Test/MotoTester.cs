@@ -73,10 +73,10 @@ namespace QBU9QL_HFT_2022231.Test
         {
             var expected = new List<object>()
             {
-                new Riders(1, "Max Verstappen", 1999, 'M', 2),
+                "Max Verstappen"
             };
 
-            var result = riderLogic.HasThisModel().ToList();
+            var result = riderLogic.HasETZModel().ToList();
 
             Assert.AreEqual(expected.ToString(), result.ToString());
         }
@@ -85,8 +85,8 @@ namespace QBU9QL_HFT_2022231.Test
         {
             var expected = new List<object>()
             {
-                new Riders(1, "Max Verstappen", 1999, 'M', 2),
-                new Riders(3, "Niki Lauda", 1965, 'M', 3),
+                "Max Verstappen"
+                
             };
 
             var result = riderLogic.HasMoreThan800ccmMoto().ToList();
@@ -98,7 +98,7 @@ namespace QBU9QL_HFT_2022231.Test
         {
             object expected = new List<object>()
             {
-                new Riders(3, "Niki Lauda", 1965, 'M', 3),
+                "Niki Lauda"
             };
 
             var result = riderLogic.HasAprilia().ToList();
@@ -114,7 +114,7 @@ namespace QBU9QL_HFT_2022231.Test
                 "S50"
             };
             
-            var result = motoLogic.MaxSoldCompany().ToList();
+            var result = motoLogic.ThisModelHasTheBestBrand().ToList();
 
             Assert.AreEqual(expected.ToString(), result.ToString());  
         }
@@ -124,8 +124,8 @@ namespace QBU9QL_HFT_2022231.Test
         {
             var expected = new List<object>()
             {
-                new Brands(1, "Simson", 1856, 30000000),
-                new Brands(2, "MZ", 1785, 90000),
+                "Simson",
+                "MZ"
             };
 
             var result = motoLogic.CompanyOlderThan70().ToList();

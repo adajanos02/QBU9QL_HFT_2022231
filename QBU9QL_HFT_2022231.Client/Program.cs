@@ -130,15 +130,56 @@ namespace QBU9QL_HFT_2022231.Client
         }
         static void MaxSoldCompany(string endpoint)
         {
-            Console.WriteLine("This motorcycle's company sold bikes in most cases ");
+            Console.WriteLine("Bikes with the most popular brand ");
+            var datas = rest.Get<object>($"Stat/{endpoint}");
+            foreach (var item in datas)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
         }
-
+        static void HasThisBrand(string endpoint)
+        {
+            Console.WriteLine("These riders have this brand of motorcycle: ");
+            var datas = rest.Get<object>($"Stat/{endpoint}");
+            foreach (var item in datas)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
+        }
+        static void HasMoreThan800ccmBike(string endpoint)
+        {
+            Console.WriteLine("These riders have bikes over 800 engine capacity:  ");
+            var datas = rest.Get<object>($"Stat/{endpoint}");
+            foreach (var item in datas)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
+        }
+        static void CompanyOlderThan70(string endpoint)
+        {
+            Console.WriteLine("These bike's company is older than 70 years old");
+            var datas = rest.Get<object>($"Stat/{endpoint}");
+            foreach (var item in datas)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
+        }
         static void Main(string[] args)
         {
             rest = new RestService("http://localhost:34767/", "rider");
 
-            var nonC = new ConsoleMenu(args, level: 2)
-                .Add("Who has Mz?", () => HasMz("HasThisModel"))
+            var ridersNonC = new ConsoleMenu(args, level: 2)
+                .Add("Who has Mz?", () => HasMz("HasETZModel"))
+                .Add("Who has bike over 800 ccm?", () => HasMoreThan800ccmBike("GetHasMoreThan800ccmMoto"))
+                .Add("Who has this brand?", () => HasThisBrand("HasAprilia"))
+                .Add("Exit", ConsoleMenu.Close);
+            var motosNonC = new ConsoleMenu(args, level: 2)
+                .Add("Motorcycle's company which older than 70 yo", () => CompanyOlderThan70("GetCompanyOlderThan70"))
+                .Add("Bikes from the most popular brand", () => MaxSoldCompany("GetMaxSoldCompany"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var riderSubMenu = new ConsoleMenu(args, level: 1)
@@ -146,7 +187,7 @@ namespace QBU9QL_HFT_2022231.Client
                 .Add("Create", () => Create("Rider"))
                 .Add("Delete", () => Delete("Rider"))
                 .Add("Update", () => Update("Rider"))
-                .Add("Who has Mz?", () => nonC.Show())
+                .Add("Non-Cruds", () => ridersNonC.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             var motorcycleSubMenu = new ConsoleMenu(args, level: 1)
@@ -154,6 +195,7 @@ namespace QBU9QL_HFT_2022231.Client
                 .Add("Create", () => Create("Moto"))
                 .Add("Delete", () => Delete("Moto"))
                 .Add("Update", () => Update("Moto"))
+                .Add("Non-Cruds", () => motosNonC.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             var brandSubMenu = new ConsoleMenu(args, level: 1)

@@ -22,7 +22,7 @@ namespace QBU9QL_HFT_2022231.Endpoint.Controllers
         [HttpGet]
         public IEnumerable<object> GetMaxSoldCompany()
         {
-            return this.logic.MaxSoldCompany();
+            return this.logic.ThisModelHasTheBestBrand();
         }
         [HttpGet]
         public IEnumerable<object> GetCompanyOlderThan70()
@@ -40,9 +40,9 @@ namespace QBU9QL_HFT_2022231.Endpoint.Controllers
             return this.rLogic.HasAprilia();
         }
         [HttpGet]
-        public IEnumerable<object> HasThisModel()
+        public IEnumerable<object> HasETZModel()
         {
-            return this.rLogic.HasThisModel();
+            return this.rLogic.HasETZModel();
         }
 
     }

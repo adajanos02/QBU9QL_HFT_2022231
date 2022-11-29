@@ -12,7 +12,7 @@ namespace QBU9QL_HFT_2022231.Logic.Interfaces
         Motorcycle Read(int id);
         IQueryable<Motorcycle> ReadAll();
         void Update(Motorcycle item);
-        IEnumerable<object> MaxSoldCompany();
+        IEnumerable<object> ThisModelHasTheBestBrand();
         IEnumerable<object> CompanyOlderThan70();
     }
 }

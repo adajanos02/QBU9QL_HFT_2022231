@@ -15,6 +15,6 @@ namespace QBU9QL_HFT_2022231.Logic.Interfaces
         void Update(Riders item);
         IEnumerable<object> HasMoreThan800ccmMoto();
         IEnumerable<object> HasAprilia();
-        IEnumerable<object> HasThisModel();
+        IEnumerable<object> HasETZModel();
     }
 }
