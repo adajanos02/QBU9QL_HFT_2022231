@@ -32,7 +32,7 @@ namespace QBU9QL_HFT_2022231.Client
                 string name = Console.ReadLine();
                 rest.Post(new Riders() { Name = name }, "brand");
             }
-            
+
 
         }
         static void List(string entity)
@@ -117,17 +117,36 @@ namespace QBU9QL_HFT_2022231.Client
                 rest.Delete(id, "brand");
             }
         }
+        static void HasMz(string endpoint)
+        {
+
+            Console.WriteLine("These Rider(s) have/has Mz motorcycle");
+            var datas = rest.Get<object>($"Stat/{endpoint}");
+            foreach (var item in datas)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
+        }
+        static void MaxSoldCompany(string endpoint)
+        {
+            Console.WriteLine("This motorcycle's company sold bikes in most cases ");
+        }
+
         static void Main(string[] args)
         {
             rest = new RestService("http://localhost:34767/", "rider");
-           
 
+            var nonC = new ConsoleMenu(args, level: 2)
+                .Add("Who has Mz?", () => HasMz("HasThisModel"))
+                .Add("Exit", ConsoleMenu.Close);
 
             var riderSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Rider"))
                 .Add("Create", () => Create("Rider"))
                 .Add("Delete", () => Delete("Rider"))
                 .Add("Update", () => Update("Rider"))
+                .Add("Who has Mz?", () => nonC.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             var motorcycleSubMenu = new ConsoleMenu(args, level: 1)

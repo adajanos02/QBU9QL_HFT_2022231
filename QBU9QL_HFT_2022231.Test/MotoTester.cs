@@ -78,7 +78,7 @@ namespace QBU9QL_HFT_2022231.Test
 
             var result = riderLogic.HasThisModel().ToList();
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected.ToString(), result.ToString());
         }
         [Test]
         public void MasMoreThan800ccmMoto()
@@ -91,7 +91,7 @@ namespace QBU9QL_HFT_2022231.Test
 
             var result = riderLogic.HasMoreThan800ccmMoto().ToList();
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected.ToString(), result.ToString());
         }
         [Test]
         public void HasApriliaTest()
@@ -103,7 +103,7 @@ namespace QBU9QL_HFT_2022231.Test
 
             var result = riderLogic.HasAprilia().ToList();
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected.ToString(), result.ToString());
 
         }
         [Test]
@@ -111,7 +111,7 @@ namespace QBU9QL_HFT_2022231.Test
         {
             var expected = new List<object>()
             {
-                new Motorcycle(1, "S50", 50, 6, 2),
+                "S50"
             };
             
             var result = motoLogic.MaxSoldCompany().ToList();

@@ -52,7 +52,7 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 
         public IEnumerable<object> MaxSoldCompany()
         {
-            return this.repo.ReadAll().Where(m => m.Brands.NumbOfSoldProd == repo.ReadAll().Max(k => k.Brands.NumbOfSoldProd));
+            return this.repo.ReadAll().Where(m => m.Brands.NumbOfSoldProd == repo.ReadAll().Max(k => k.Brands.NumbOfSoldProd)).Select(m => m.Model);
         }
         public IEnumerable<object> CompanyOlderThan70()
         {
