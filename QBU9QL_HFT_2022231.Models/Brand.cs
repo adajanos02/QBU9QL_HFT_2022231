@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace QBU9QL_HFT_2022231.Models
 
 {
-    public class Brands
+    public class Brand
     {
-        public Brands(int brandId, string name, int establishmentYear, int numbOfSoldProd)
+        public Brand(int brandId, string name, int establishmentYear, int numbOfSoldProd)
         {
             BrandId = brandId;
             Name = name;
@@ -20,10 +20,10 @@ namespace QBU9QL_HFT_2022231.Models
             NumbOfSoldProd = numbOfSoldProd;
         }
         [JsonIgnore]
-        public virtual ICollection<Motorcycle> Motorcycles { get; set; }
-        public Brands()
+        public virtual ICollection<Moto> Motorcycles { get; set; }
+        public Brand()
         {
-            Motorcycles = new HashSet<Motorcycle>();
+            Motorcycles = new HashSet<Moto>();
         }
 
         [Key]

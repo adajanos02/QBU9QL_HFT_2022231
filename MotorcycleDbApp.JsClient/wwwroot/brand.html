@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Brand UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Brand Catalog</h1>
+    <div id="formdiv">
+        <label>Brand Name</label>
+        <input type="text" id="brandname" />
+        <button type="button" onclick="createBrand()">Add Brand</button>
+    </div>
+    <div id="updateformdiv">
+        <label>Brand Name</label>
+        <input type="text" id="brandnametoupdate" />
+        <button type="button" onclick="updateBrand()">Update Brand</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>BrandId</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="brand.js"></script>
+</body>
+</html>

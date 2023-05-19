@@ -11,14 +11,14 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 {
     public class RiderLogic : IRiderLogic
     {
-        IRepository<Riders> repo;
+        IRepository<Rider> repo;
 
-        public RiderLogic(IRepository<Riders> repo)
+        public RiderLogic(IRepository<Rider> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Riders item)
+        public void Create(Rider item)
         {
             this.repo.Create(item);
         }
@@ -28,17 +28,17 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             this.repo.Delete(id);
         }
 
-        public Riders Read(int id)
+        public Rider Read(int id)
         {
             return this.repo.Read(id);
         }
 
-        public IQueryable<Riders> ReadAll()
+        public IQueryable<Rider> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Riders item)
+        public void Update(Rider item)
         {
             this.repo.Update(item);
         }

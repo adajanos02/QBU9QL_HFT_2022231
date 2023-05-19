@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace QBU9QL_HFT_2022231.Models
 {
-    public class Riders
+    public class Rider
     {
-        public Riders(int riderId, string name, int year, char gender, int motoId)
+        public Rider(int riderId, string name, int year, char gender, int motoId)
         {
             RiderId = riderId;
             Name = name;
@@ -20,7 +20,7 @@ namespace QBU9QL_HFT_2022231.Models
             
             MotoId = motoId;
         }
-        public Riders()
+        public Rider()
         {
 
         }
@@ -33,7 +33,7 @@ namespace QBU9QL_HFT_2022231.Models
         public char Gender { get; set; }
         [NotMapped]
         
-        public virtual Motorcycle Motorcycle { get; set; }
+        public virtual Moto Motorcycle { get; set; }
         [ForeignKey(nameof(Motorcycle))]
         public int MotoId { get; set; }
 

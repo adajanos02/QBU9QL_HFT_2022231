@@ -9,18 +9,18 @@ using QBU9QL_HFT_2022231.Repository.Data;
 
 namespace QBU9QL_HFT_2022231.Repository.Repositories
 {
-    public class BrandRepository : Repository<Brands>, IRepository<Brands>
+    public class BrandRepository : Repository<Brand>, IRepository<Brand>
     {
         public BrandRepository(MotoDbContext ctx) : base(ctx)
         {
         }
 
-        public override Brands Read(int id)
+        public override Brand Read(int id)
         {
             return ctx.Brands.FirstOrDefault(t => t.BrandId == id);
         }
 
-        public override void Update(Brands item)
+        public override void Update(Brand item)
         {
             var old = Read(item.BrandId);
             foreach (var prop in old.GetType().GetProperties())

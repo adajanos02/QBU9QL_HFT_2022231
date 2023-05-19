@@ -18,19 +18,19 @@ namespace QBU9QL_HFT_2022231.Client
             {
                 Console.WriteLine("Enter Rider Name: ");
                 string name = Console.ReadLine();
-                rest.Post(new Riders() { Name = name }, "rider");
+                rest.Post(new Rider() { Name = name }, "rider");
             }
-            else if (entity == "Moto")
+            else if (entity == "Motorcycle")
             {
                 Console.WriteLine("Enter Motorcycle Model: ");
                 string name = Console.ReadLine();
-                rest.Post(new Motorcycle() { Model = name }, "moto");
+                rest.Post(new Moto() { Model = name }, "motorcycle");
             }
             else if (entity == "Brand")
             {
                 Console.WriteLine("Enter Brand Name: ");
                 string name = Console.ReadLine();
-                rest.Post(new Riders() { Name = name }, "brand");
+                rest.Post(new Rider() { Name = name }, "brand");
             }
 
 
@@ -39,15 +39,15 @@ namespace QBU9QL_HFT_2022231.Client
         {
             if (entity == "Rider")
             {
-                List<Riders> riders = rest.Get<Riders>("rider");
+                List<Rider> riders = rest.Get<Rider>("rider");
                 foreach (var item in riders)
                 {
                     Console.WriteLine(item.RiderId + ": " + item.Name);
                 }
             }
-            else if (entity == "Moto")
+            else if (entity == "Motorcycle")
             {
-                List<Motorcycle> motos = rest.Get<Motorcycle>("moto");
+                List<Moto> motos = rest.Get<Moto>("motorcycle");
                 foreach (var item in motos)
                 {
                     Console.WriteLine(item.MotoId + ": " + item.Model);
@@ -55,7 +55,7 @@ namespace QBU9QL_HFT_2022231.Client
             }
             else if (entity == "Brand")
             {
-                List<Brands> brands = rest.Get<Brands>("brand");
+                List<Brand> brands = rest.Get<Brand>("brand");
                 foreach (var item in brands)
                 {
                     Console.WriteLine(item.BrandId + ": " + item.Name);
@@ -69,27 +69,27 @@ namespace QBU9QL_HFT_2022231.Client
             {
                 Console.Write("Enter Rider's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Riders one = rest.Get<Riders>(id, "rider");
+                Rider one = rest.Get<Rider>(id, "rider");
                 Console.Write($"New name [old: {one.Name}]: ");
                 string name = Console.ReadLine();
                 one.Name = name;
                 rest.Put(one, "rider");
             }
-            else if (entity == "Moto")
+            else if (entity == "Motorcycle")
             {
                 Console.Write("Enter Motorcycle's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Motorcycle one = rest.Get<Motorcycle>(id, "moto");
+                Moto one = rest.Get<Moto>(id, "motorcycle");
                 Console.Write($"New name [old: {one.Model}]: ");
                 string name = Console.ReadLine();
                 one.Model = name;
-                rest.Put(one, "moto");
+                rest.Put(one, "motorcycle");
             }
             else if (entity == "Brand")
             {
                 Console.Write("Enter Brand's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Brands one = rest.Get<Brands>(id, "brand");
+                Brand one = rest.Get<Brand>(id, "brand");
                 Console.Write($"New name [old: {one.Name}]: ");
                 string name = Console.ReadLine();
                 one.Name = name;
@@ -104,11 +104,11 @@ namespace QBU9QL_HFT_2022231.Client
                 int id = int.Parse(Console.ReadLine());
                 rest.Delete(id, "rider");
             }
-            else if (entity == "Moto")
+            else if (entity == "Motorcycle")
             {
                 Console.Write("Enter Motorcycle's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "moto");
+                rest.Delete(id, "motorcycle");
             }
             else if (entity == "Brand")
             {
@@ -191,10 +191,10 @@ namespace QBU9QL_HFT_2022231.Client
                 .Add("Exit", ConsoleMenu.Close);
 
             var motorcycleSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Moto"))
-                .Add("Create", () => Create("Moto"))
-                .Add("Delete", () => Delete("Moto"))
-                .Add("Update", () => Update("Moto"))
+                .Add("List", () => List("Motorcycle"))
+                .Add("Create", () => Create("Motorcycle"))
+                .Add("Delete", () => Delete("Motorcycle"))
+                .Add("Update", () => Update("Motorcycle"))
                 .Add("Non-Cruds", () => motosNonC.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
@@ -209,7 +209,7 @@ namespace QBU9QL_HFT_2022231.Client
 
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Riders", () => riderSubMenu.Show())
-                .Add("Moto", () => motorcycleSubMenu.Show())
+                .Add("Motorcycle", () => motorcycleSubMenu.Show())
                 .Add("Brands", () => brandSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 

@@ -8,11 +8,11 @@ namespace QBU9QL_HFT_2022231.Logic.Interfaces
 {
     public interface IRiderLogic
     {
-        void Create(Riders item);
+        void Create(Rider item);
         void Delete(int id);
-        Riders Read(int id);
-        IQueryable<Riders> ReadAll();
-        void Update(Riders item);
+        Rider Read(int id);
+        IQueryable<Rider> ReadAll();
+        void Update(Rider item);
         IEnumerable<object> HasMoreThan800ccmMoto();
         IEnumerable<object> HasAprilia();
         IEnumerable<object> HasETZModel();

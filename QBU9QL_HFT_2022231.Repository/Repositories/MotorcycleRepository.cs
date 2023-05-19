@@ -9,18 +9,18 @@ using QBU9QL_HFT_2022231.Repository.Interfaces;
 
 namespace QBU9QL_HFT_2022231.Repository.Repositories
 {
-    public class MotorcycleRepository : Repository<Motorcycle>, IRepository<Motorcycle>
+    public class MotorcycleRepository : Repository<Moto>, IRepository<Moto>
     {
         public MotorcycleRepository(MotoDbContext ctx) : base(ctx)
         {
         }
 
-        public override Motorcycle Read(int id)
+        public override Moto Read(int id)
         {
             return ctx.Motorcycless.FirstOrDefault(t => t.MotoId == id);
         }
 
-        public override void Update(Motorcycle item)
+        public override void Update(Moto item)
         {
             var old = Read(item.MotoId);
             foreach (var prop in old.GetType().GetProperties())

@@ -11,14 +11,14 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 {
     public class BrandLogic : IBrandLogic
     {
-        IRepository<Brands> repo;
+        IRepository<Brand> repo;
 
-        public BrandLogic(IRepository<Brands> repo)
+        public BrandLogic(IRepository<Brand> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Brands item)
+        public void Create(Brand item)
         {
             this.repo.Create(item);
         }
@@ -28,17 +28,17 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             this.repo.Delete(id);
         }
 
-        public Brands Read(int id)
+        public Brand Read(int id)
         {
             return this.repo.Read(id);
         }
 
-        public IQueryable<Brands> ReadAll()
+        public IQueryable<Brand> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Brands item)
+        public void Update(Brand item)
         {
             this.repo.Update(item);
         }

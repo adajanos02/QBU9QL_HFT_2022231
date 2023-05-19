@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace QBU9QL_HFT_2022231.Models
 {
-    public class Motorcycle
+    public class Moto
     {
-        public Motorcycle(int motoId, string model, int engineCapacity, int horsePower, int brandId)
+        public Moto(int motoId, string model, int engineCapacity, int horsePower, int brandId)
         {
             MotoId = motoId;
             Model = model;
@@ -22,10 +22,10 @@ namespace QBU9QL_HFT_2022231.Models
             
         }
         [JsonIgnore]
-        public virtual ICollection<Riders> Riders { get; set; }
-        public Motorcycle()
+        public virtual ICollection<Rider> Riders { get; set; }
+        public Moto()
         {
-            Riders = new HashSet<Riders>();
+            Riders = new HashSet<Rider>();
         }
 
         [Key]
@@ -41,7 +41,7 @@ namespace QBU9QL_HFT_2022231.Models
         public int HorsePower { get; set; }
         [NotMapped]
        
-        public virtual Brands Brands { get; set; }
+        public virtual Brand Brands { get; set; }
 
         [ForeignKey(nameof(Brands))]
         public int BrandId { get; set; }

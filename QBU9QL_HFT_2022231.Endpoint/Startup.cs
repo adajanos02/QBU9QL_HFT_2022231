@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using QBU9QL_HFT_2022231.Endpoint.Services;
 using QBU9QL_HFT_2022231.Logic.Classes;
 using QBU9QL_HFT_2022231.Logic.Interfaces;
 using QBU9QL_HFT_2022231.Models;
@@ -30,15 +31,18 @@ namespace QBU9QL_HFT_2022231.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
             services.AddTransient<MotoDbContext>();
 
-            services.AddTransient<IRepository<Riders>, RiderRepository>();
-            services.AddTransient<IRepository<Motorcycle>, MotorcycleRepository>();
-            services.AddTransient<IRepository<Brands>, BrandRepository>();
+            services.AddTransient<IRepository<Rider>, RiderRepository>();
+            services.AddTransient<IRepository<Moto>, MotorcycleRepository>();
+            services.AddTransient<IRepository<Brand>, BrandRepository>();
 
             services.AddTransient<IRiderLogic, RiderLogic>();
             services.AddTransient<IMotoLogic, MotoLogic>();
             services.AddTransient<IBrandLogic, BrandLogic>();
+
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -50,6 +54,7 @@ namespace QBU9QL_HFT_2022231.Endpoint
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -66,6 +71,11 @@ namespace QBU9QL_HFT_2022231.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:64112"));
 
             app.UseRouting();
 
@@ -74,6 +84,7 @@ namespace QBU9QL_HFT_2022231.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

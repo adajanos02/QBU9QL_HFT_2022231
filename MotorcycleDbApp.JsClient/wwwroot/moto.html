@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Motorcycle UI</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Motorcycle Catalog</h1>
+
+    <div id="formdiv">
+        <label>Motorcycle Name</label>
+        <input type="text" id="motoname" />
+        <button type="button" onclick="create()">Add Motorcycle</button>
+    </div>
+    <div id="updateformdiv">
+        <label>Motorcycle Name</label>
+        <input type="text" id="motonametoupdate" />
+        <button type="button" onclick="update()">Update Motorcycle</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>MotoID</th>
+                <th>Model</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="moto.js"></script>
+
+</body>
+</html>

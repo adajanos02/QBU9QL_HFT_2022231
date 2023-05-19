@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Rider UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Rider Catalog</h1>
+
+    <div id="formdiv">
+        <label>Rider Name</label>
+        <input type="text" id="ridername" />
+        <button type="button" onclick="createRider()">Add Rider</button>
+    </div>
+    <div id="updateformdiv">
+        <label>Rider Name</label>
+        <input type="text" id="ridernametoupdate" />
+        <button type="button" onclick="updateRider()">Update Rider</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>RiderID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="rider.js"></script>
+
+</body>
+</html>

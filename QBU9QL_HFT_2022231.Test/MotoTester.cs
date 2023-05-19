@@ -21,37 +21,37 @@ namespace QBU9QL_HFT_2022231.Test
 
        
 
-        Mock<IRepository<Motorcycle>> mockMoto;
-        Mock<IRepository<Riders>> mockRiders;
-        Mock<IRepository<Brands>> mockBrands;
+        Mock<IRepository<Moto>> mockMoto;
+        Mock<IRepository<Rider>> mockRiders;
+        Mock<IRepository<Brand>> mockBrands;
 
 
         [SetUp]
         public void InIt()
         {
-            mockMoto = new Mock<IRepository<Motorcycle>>();
-            mockRiders = new Mock<IRepository<Riders>>();
-            mockBrands = new Mock<IRepository<Brands>>();
+            mockMoto = new Mock<IRepository<Moto>>();
+            mockRiders = new Mock<IRepository<Rider>>();
+            mockBrands = new Mock<IRepository<Brand>>();
 
-            var brands = new List<Brands>()
+            var brands = new List<Brand>()
             {
-                 new Brands(1, "Simson", 1856, 30000000),
-                 new Brands(2, "MZ", 1785, 90000),
-                 new Brands(3, "Aprilia", 1955, 3000),
+                 new Brand(1, "Simson", 1856, 30000000),
+                 new Brand(2, "MZ", 1785, 90000),
+                 new Brand(3, "Aprilia", 1955, 3000),
             };
 
-            var motos = new List<Motorcycle>()
+            var motos = new List<Moto>()
             {
-                new Motorcycle(1, "S50", 50, 6, 2) {Brands = brands[0]},
-                new Motorcycle(2, "ETZ", 850, 20, 3) {Brands = brands[1]},
-                new Motorcycle(3, "Pegaso", 900, 36, 1) {Brands = brands[2]},
+                new Moto(1, "S50", 50, 6, 2) {Brands = brands[0]},
+                new Moto(2, "ETZ", 850, 20, 3) {Brands = brands[1]},
+                new Moto(3, "Pegaso", 900, 36, 1) {Brands = brands[2]},
             };
 
-            var riders = new List<Riders>()
+            var riders = new List<Rider>()
             {
-                new Riders(1, "Max Verstappen", 1999, 'M', 2) {Motorcycle = motos[1]},
-                new Riders(2, "Lewis Hamilton", 1992, 'M', 1) {Motorcycle = motos[0]},
-                new Riders(3, "Niki Lauda", 1965, 'M', 3) {Motorcycle = motos[2]},
+                new Rider(1, "Max Verstappen", 1999, 'M', 2) {Motorcycle = motos[1]},
+                new Rider(2, "Lewis Hamilton", 1992, 'M', 1) {Motorcycle = motos[0]},
+                new Rider(3, "Niki Lauda", 1965, 'M', 3) {Motorcycle = motos[2]},
             };
 
 
@@ -136,7 +136,7 @@ namespace QBU9QL_HFT_2022231.Test
         [Test]
         public void CreateCheck()
         {
-            Motorcycle newMoto = new Motorcycle(36, "Varadero", 1000, 102, 3);
+            Moto newMoto = new Moto(36, "Varadero", 1000, 102, 3);
 
             motoLogic.Create(newMoto);
 
@@ -146,7 +146,7 @@ namespace QBU9QL_HFT_2022231.Test
         [Test]
         public void CreateCheckWithIncorrectInput()
         {
-            Motorcycle newMoto = new Motorcycle() { MotoId = 87 };
+            Moto newMoto = new Moto() { MotoId = 87 };
             try
             {
                 motoLogic.Create(newMoto);
@@ -162,7 +162,7 @@ namespace QBU9QL_HFT_2022231.Test
         [Test]
         public void CreateCheckWithIncorrectModelName()
         {
-            Motorcycle newMoto = new Motorcycle(36, "aaaaaaaaaaa", 1000, 1, 125);
+            Moto newMoto = new Moto(36, "aaaaaaaaaaa", 1000, 1, 125);
             try
             {
                 motoLogic.Create(newMoto);
@@ -186,7 +186,7 @@ namespace QBU9QL_HFT_2022231.Test
         [Test]
         public void UpdateCheck()
         {
-            Motorcycle newMoto = new Motorcycle(12, "ETZ", 150, 15, 13);
+            Moto newMoto = new Moto(12, "ETZ", 150, 15, 13);
 
             motoLogic.Update(newMoto);
 
@@ -195,7 +195,7 @@ namespace QBU9QL_HFT_2022231.Test
         [Test]
         public void ReadCheck()
         {
-            Motorcycle newMoto = new Motorcycle(45, "S50", 50, 6, 12);
+            Moto newMoto = new Moto(45, "S50", 50, 6, 12);
             mockMoto.Setup(m => m.Read(0)).Returns(newMoto);
 
             var result = motoLogic.Read(0);

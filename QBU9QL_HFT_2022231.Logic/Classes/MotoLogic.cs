@@ -10,13 +10,13 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
 {
     public class MotoLogic : IMotoLogic
     {
-        IRepository<Motorcycle> repo;
-        public MotoLogic(IRepository<Motorcycle> repo)
+        IRepository<Moto> repo;
+        public MotoLogic(IRepository<Moto> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Motorcycle item)
+        public void Create(Moto item)
         {
             if (item.Model.Length > 10)
             {
@@ -30,7 +30,7 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             this.repo.Delete(id);
         }
 
-        public Motorcycle Read(int id)
+        public Moto Read(int id)
         {
             var moto = this.repo.Read(id);
             if (moto == null)
@@ -40,12 +40,12 @@ namespace QBU9QL_HFT_2022231.Logic.Classes
             return moto;
         }
 
-        public IQueryable<Motorcycle> ReadAll()
+        public IQueryable<Moto> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Motorcycle item)
+        public void Update(Moto item)
         {
             this.repo.Update(item);
         }
