@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Motorcycle UI</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <h1>Motorcycle Catalog</h1>
@@ -28,10 +28,43 @@
             </tr>
         </thead>
         <tbody id="resultarea">
-
         </tbody>
     </table>
+    <h1>Noncruds</h1>
+    <div id="GetMaxSoldCompany">
+        
+        
+        <button type="button" onclick="GetMaxSoldCompany()">GetMaxSoldCompany</button>
+    </div>
+    <div id="maxsoldcompany_result">
+        <table>
+            <thead>
+                <tr>
+                    <th>Which company sold the most of motorcycle?</th>
+                </tr>
+            </thead>
+            <tbody id="maxsoldcompany_result_data">
+            </tbody>
+        </table>
+    </div>
 
+    <div id="CompanyOlderThan70">
+        <button type="button" onclick="CompanyOlderThan70()">GetCompanyOlderThan70</button>
+    </div>
+    <div id="getcompanyolder_result">
+        <table>
+            <thead>
+                <tr>
+                    <th>Which model's company is older than 70 yo?'</th>
+                </tr>
+            </thead>
+            <tbody id="getcompanyolder_result_data">
+
+            </tbody>
+        </table>
+    </div>
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="moto.js"></script>
 

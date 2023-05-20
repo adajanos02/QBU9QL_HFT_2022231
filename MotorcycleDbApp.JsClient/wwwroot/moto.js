@@ -123,3 +123,31 @@ function update() {
     //display();
 
 }
+let maxsold = [];
+function GetMaxSoldCompany() {
+    
+    fetch('http://localhost:34767/Stat/GetMaxSoldCompany')
+        .then(x => x.json())
+        .then(y => {
+            maxsold = y;
+            maxsold.forEach(t => {
+                document.getElementById('maxsoldcompany_result_data').innerHTML +=
+                    "<tr><td>" + t + "</td></tr>";
+            });
+            document.getElementById('maxsoldcompany_result').style.display = 'flex';
+        });
+}
+let olderthan = [];
+function CompanyOlderThan70() {
+
+    fetch('http://localhost:34767/Stat/GetCompanyOlderThan70')
+        .then(x => x.json())
+        .then(y => {
+            olderthan = y;
+            olderthan.forEach(t => {
+                document.getElementById('getcompanyolder_result_data').innerHTML +=
+                    "<tr><td>" + t + "</td></tr>";
+            });
+            document.getElementById('getcompanyolder_result').style.display = 'flex';
+        });
+}

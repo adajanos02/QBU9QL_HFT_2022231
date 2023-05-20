@@ -122,9 +122,48 @@ function updateRider() {
     //display();
 
 }
+let morethan = [];
+function HasMoreThan800ccmMoto() {
 
+    fetch('http://localhost:34767/Stat/GetHasMoreThan800ccmMoto')
+        .then(x => x.json())
+        .then(y => {
+            morethan = y;
+            morethan.forEach(t => {
+                document.getElementById('morethan800_result_data').innerHTML +=
+                    "<tr><td>" + t + "</td></tr>";
+            });
+            document.getElementById('morethan800_result').style.display = 'flex';
+        });
+}
+let aprilia = [];
+function HasAprilia() {
 
+    fetch('http://localhost:34767/Stat/HasAprilia')
+        .then(x => x.json())
+        .then(y => {
+            aprilia = y;
+            aprilia.forEach(t => {
+                document.getElementById('hasaprilia_result_data').innerHTML +=
+                    "<tr><td>" + t + "</td></tr>";
+            });
+            document.getElementById('hasaprilia_result').style.display = 'flex';
+        });
+}
+let etz = [];
+function HasETZ() {
 
+    fetch('http://localhost:34767/Stat/HasETZModel')
+        .then(x => x.json())
+        .then(y => {
+            etz = y;
+            etz.forEach(t => {
+                document.getElementById('hasetz_result_data').innerHTML +=
+                    "<tr><td>" + t + "</td></tr>";
+            });
+            document.getElementById('hasetz_result').style.display = 'flex';
+        });
+}
 
 
 
